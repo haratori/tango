@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+
+    <title>tango - 英単語を効率よく学習</title>
+    <script src="core.js"></script>
+    <script src="data.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="s12 m6 l4 offset-l3"><span class="blue-text text-darken-2"><h4>tango : )</h4></span></div>
+        <label id="subtitle">英単語をゲーム感覚で楽しく覚えることができます。高得点目指してチャレンジしよう！</label>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">x</span>
+          <p>your score is <label id="score" class="blue-text text-darken-2">0</label></p>
+          <table id="result">
+            <tr><th>question</th><th>your answer</th><th>correct answer</th></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+          </table>
+
+          <div class="center">
+            <ul><li><button type="button" class="waves-effect waves-light btn-large" onClick="location.reload()";>トップに戻る</button></li></ul>
+          </div>
+        </BR>
+        </div>
+      </div>
+
+
+
+    </BR>
+    <div id="description">
+      <div class="row">
+        <div class="s12 l8 offset-l3 center">
+          <span class="grey-text text-darken-2"><h4>クイズに答えて</h4></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="s12 l8 offset-l3 center">
+          <span class="grey-text text-darken-2"><h4>英単語を学習します</h4></span>
+        </div>
+      </div>
+    </div>
+
+      <!-- Init screen -->
+      <div id="init-page">
+        <div class="row">
+          <div class="col s10 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/abc.jpeg">
+                <span class="card-title">Level1</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level1</span>
+              <p class="grey-text">中学１年生レベル</p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l1" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div class="col s10 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/teach.jpeg">
+                <span class="card-title">Level2</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level2</span>
+              <p class="grey-text">中学２年生レベル </p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l2" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div class="col s10 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/pens.jpeg">
+                <span class="card-title">Level3</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level3</span>
+              <p class="grey-text">中学３年生レベル </p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l3" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 m6 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/neko.jpeg">
+                <span class="card-title">Level4</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level4</span>
+              <p class="grey-text">中学４年生レベル </p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l4" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div class="col s10 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/usa.jpeg">
+                <span class="card-title">Level5</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level5</span>
+              <p class="grey-text">中学５年生レベル </p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l5" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div class="col s10 l4 offset-s1">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/uk.jpeg">
+                <span class="card-title">Level6</span>
+              </div>
+            <div class="card-content">
+              <span class="card-title grey-text">level6</span>
+              <p class="grey-text">中学６年生レベル </p>
+              </BR>
+              <div class="center-align">
+                <a class="waves-effect waves-light btn" id="l6" onClick="startGame(id)">Start</a>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- this page appears after start -->
+    <div id="b-box" style="display: none;" class="center">
+      <h2 id='h1' class="center-align blue-text">question</h2>
+      <p id="ans" >○</p>
+
+    </BR>
+    </BR>
+
+      <div class="buttons row">
+        <div class="col s10 l4 offset-s1 offset-l2">
+          <button type="button" class="waves-effect waves-light btn-large" id="0" onClick="checkAnswer(name)">answer1</button>
+        </div>
+        <div class="col s10 l4 offset-s1">
+          <button type="button" class="waves-effect waves-light btn-large" id='1' onClick="checkAnswer(name)">answer2</button>
+        </div>
+      </div>
+      <div class="buttons row">
+        <div class="col s10 l4 offset-s1 offset-l2">
+          <button type="button" class="waves-effect waves-light btn-large" id='2' onClick="checkAnswer(name)">answer3</button>
+        </div>
+        <div class="col s10 l4 offset-s1">
+          <button type="button" class="waves-effect waves-light btn-large" id='3' onClick="checkAnswer(name)">answer4</button>
+        </div>
+      </div>
+
+      <div>
+        <table class="metrics">
+          <tr>
+            <th><label>スコア</label></th>
+            <th><label>正解数</label></th>
+            <th><label>不正解</label></th>
+            <th><label>正解率</label></th>
+            <th><label>連続正解</label></th>
+          </tr>
+          <tr>
+            <td><h5 id="points">0</h5></td>
+            <td><h5 id="total_correct_num">0</h5></td>
+            <td><h5 id="total_wrong_num">0</h5></td>
+            <td><h5 id="correct_percentage">0</h5></td>
+            <td><h5 id="succession_num">0</h5></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- audio file -->
+    <audio id="correct_sound" preload="auto"><source src="correct2.mp3" type="audio/mp3"></audio>
+    <audio id="incorrect_sound" preload="auto"><source src="incorrect2.mp3" type="audio/mp3"></audio>
+
+    </div>
+
+
+    <footer class="page-footer white">
+     <div class="container">
+      <div class="row">
+       <div class="col l12 s12">
+        <p class="blue-text center-align">&copy; bit of paper</p>
+       </div>
+      </div>
+     <div>
+    </footer>
+  </body>
+
+</html>
