@@ -277,10 +277,34 @@ function gameOver() {
             x++;
         }
 
-        modal.style.display = "block";
-        score.innerText = total_correct_num * 10;
+        //modal.style.display = "block";
+        var send_score = total_correct_num * 10;
 
-        // 暫定対応
+        // ランキングを取得
+//        getRanking();
+//        location.href = "http://e-tango.xyz/score.php";
+var json = missed_question_list;
+json.push(send_score);
+
+var form = document.createElement('form');
+var request = document.createElement('input');
+
+form.method = 'POST';
+form.action = 'http://e-tango.xyz/score.php';
+form.enctype = 'application/json';
+
+request.type = 'hidden'; //入力フォームが表示されないように
+request.name = 'data';
+request.value = JSON.stringify(json);
+//request.value = missed_question_list;
+
+form.appendChild(request);
+document.body.appendChild(form);
+
+form.submit();
+
+/*
+        // 暫定対応 ボタンのフォーカスを外す
         var button0 = document.getElementById('0');
         button0.style.display ="none";
 
@@ -292,10 +316,43 @@ function gameOver() {
 
         var button0 = document.getElementById('3');
         button0.style.display ="none";
-
+*/
 }
 
 function closeModal() {
     var modal = document.getElementById('myModal');
     modal.style.display = "none";
+}
+
+function getRanking() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function (){
+
+    	switch(xhr.readyState){
+    	case 4:
+    		// XHR 通信失敗
+    		if(xhr.status == 0){
+
+    		// XHR 通信成功
+    		}else{
+    			// リクエスト成功
+    			if((200 <= xhr.status && xhr.status < 300) || (xhr.status == 304)){
+    				console.log(xhr.responseText);
+
+    			// リクエスト失敗
+    			}else{
+
+    			}
+    		}
+    		break;
+    	}
+    };
+
+
+    var url = "http://e-tango.xyz/score.php";
+    xhr.open("GET" , url, false);
+
+    var send_data = "送信テスト";
+    xhr.send(null);
 }
